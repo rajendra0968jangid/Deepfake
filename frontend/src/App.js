@@ -19,7 +19,7 @@ export default function DeepfakeDetector() {
 
   const checkBackendHealth = async () => {
     try {
-      const response = await fetch('http://localhost:8000/health');
+      const response = await fetch(process.env.REACT_APP_API_URL+'/health');
       if (response.ok) {
         setBackendStatus('connected');
       } else {
@@ -98,10 +98,10 @@ const handleAnalyze = async () => {
     const formData = new FormData();
     formData.append('file', file);
 
-    console.log('Sending request to:', 'http://localhost:8000/api/analyze');
+    console.log('Sending request to:', process.env.REACT_APP_API_URL+'/api/analyze');
     console.log('File:', file.name, file.type, file.size);
 
-    const response = await fetch('http://localhost:8000/api/analyze', {
+    const response = await fetch(process.env.REACT_APP_API_URL+'/api/analyze', {
       method: 'POST',
       body: formData
     });
@@ -158,7 +158,7 @@ const handleAnalyze = async () => {
       errorMessage += 'Cannot connect to backend server.\n' +
                      'Please ensure:\n' +
                      '1. Backend is running: python main.py\n' +
-                     '2. Backend URL is: http://localhost:8000\n' +
+                     `2. Backend URL is: ${process.env.REACT_APP_API_URL}\n` +
                      '3. No firewall blocking the connection';
     } else if (error.message.includes('Invalid response')) {
       errorMessage += 'Backend returned invalid data.\n' +
@@ -615,7 +615,7 @@ const handleAnalyze = async () => {
                 <p className="text-sm text-yellow-200/80 font-mono leading-relaxed">
                   Advanced AI-powered deepfake detection system utilizing neural network ensemble, 
                   frequency domain analysis, facial recognition, and temporal consistency checking. 
-                  Secure encrypted connection to backend server at http://localhost:8000
+                  Secure encrypted connection to backend server at {process.env.REACT_APP_API_URL}
                 </p>
               </div>
             </div>
