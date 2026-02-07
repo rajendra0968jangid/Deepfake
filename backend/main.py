@@ -376,8 +376,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:3001", 
+        "http://3.88.204.113:3000",
+        "http://3.88.204.113:3001", 
         "http://127.0.0.1:3000",
         "http://192.168.218.1:3000"
     ],
@@ -1220,9 +1220,9 @@ if __name__ == "__main__":
     print("=" * 70)
     print("🚀 Advanced Deepfake Detection with FaceForensics++")
     print("=" * 70)
-    print("📡 Backend URL: http://localhost:8000")
-    print("📊 API Docs: http://localhost:8000/docs")
-    print("💚 Health Check: http://localhost:8000/health")
+    print("📡 Backend URL: http://3.88.204.113:8000")
+    print("📊 API Docs: http://3.88.204.113:8000/docs")
+    print("💚 Health Check: http://3.88.204.113:8000/health")
     print("=" * 70)
     
     if FFPP_LOADED and ff_ensemble.models_loaded_count > 0:
