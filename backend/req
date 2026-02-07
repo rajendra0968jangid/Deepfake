@@ -1,0 +1,14 @@
+python3.12 -m venv venv
+
+pip install --upgrade pip setuptools wheel
+
+pip install opencv-python Pillow imageio torch torchvision torchaudio timm facenet-pytorch
+
+unicorn main:app --reload
+
+python3 main.py
+
+pip install fastapi uvicorn
+
+pip install python-multipart transformers
+
